@@ -1,0 +1,27 @@
+query getRepository($repo: String!, $owner: String!) {
+  repository(name: $repo, owner: $owner) {
+    id
+    description
+    homepageUrl
+    name
+    url
+    openGraphImageUrl
+    owner {
+      id
+      login
+      avatarUrl(size: 100)
+    }
+    pullRequests {
+      totalCount
+    }
+    stargazers {
+      totalCount
+    }
+    watchers {
+      totalCount
+    }
+    issues {
+      totalCount
+    }
+  }
+}

@@ -1,0 +1,17 @@
+query getIssues($query: String!) {
+  search(type: ISSUE, first: 100, query: $query) {
+    nodes {
+      ... on Issue {
+        number
+        title
+        createdAt
+        id
+        author {
+          avatarUrl(size: 30)
+          login
+        }
+      }
+    }
+    issueCount
+  }
+}

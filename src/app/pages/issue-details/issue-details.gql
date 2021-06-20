@@ -1,0 +1,38 @@
+query getIssueDetails(
+  $repo: String!
+  $owner: String!
+  $issueId: Int!
+) {
+  repository(name: $repo, owner: $owner) {
+    id
+    issue(number: $issueId) {
+      id
+      url
+      author {
+        login
+        avatarUrl(size: 50)
+        url
+      }
+      title
+      bodyHTML
+      createdAt
+      comments(
+        orderBy: {field: UPDATED_AT, direction: ASC}
+        first: 20
+      ) {
+        nodes {
+          author {
+            login
+            avatarUrl(size: 50)
+            url
+          }
+          id
+          bodyHTML
+          createdAt
+        }
+        totalCount
+      }
+    }
+    url
+  }
+}
